@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lili Bar - Magazin Universal</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f4ede4;
+            color: #3d2817;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #c49060 100%);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2a1810;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #2a1810;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: #8b6f47;
+            border-bottom: 2px solid #8b6f47;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(212, 165, 116, 0.8), rgba(196, 144, 96, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8d4c0" width="1200" height="600"/><circle cx="100" cy="100" r="80" fill="%23d4a574" opacity="0.1"/><circle cx="1100" cy="500" r="120" fill="%238b6f47" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: #2a1810;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #8b6f47;
+            color: #f4ede4;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border: 2px solid #8b6f47;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #6d5936;
+            border-color: #6d5936;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #2a1810;
+        }
+
+        .btn-outline:hover {
+            background-color: #2a1810;
+            color: #f4ede4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #2a1810;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #d4a574, #8b6f47);
+        }
+
+        .produse-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #e8d4c0 0%, #f4ede4 100%);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border-left: 4px solid #d4a574;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-left-color: #8b6f47;
+        }
+
+        .product-card h3 {
+            color: #2a1810;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .product-card p {
+            color: #3d2817;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .gallery {
+            background-color: #e8d4c0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #d4a574, #c49060);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item.expanded {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1) !important;
+            width: 90vw;
+            height: 90vh;
+            max-width: 1000px;
+            max-height: 800px;
+            z-index: 1000;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+        }
+
+        .gallery-grid {
+            position: relative;
+        }
+
+        .gallery-grid.modal-open {
+            filter: blur(5px);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+        }
+
+        .modal-overlay.active {
+            display: block;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-placeholder {
+            font-size: 60px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+
+
+        footer {
+            background-color: #2a1810;
+            color: #f4ede4;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 28px;
+            }
+
+            .produse-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">☕ Lili Bar</div>
+            <nav>
+                <ul>
+                    <li><a href="#acasa">Acasă</a></li>
+                    <li><a href="#produse">Produse</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="acasa">
+        <div class="container">
+            <h1>Bine ați venit la Lili Bar</h1>
+            <p>Magazinul dvs. universal pentru materiale de construcții, piese auto, băuturi și mult mai mult!</p>
+            <a href="#produse" class="btn">Descoperă Produsele</a>
+        </div>
+    </section>
+
+    <section id="produse">
+        <div class="container">
+            <h2>Categoria Noastră de Produse</h2>
+            <div class="produse-grid">
+                <div class="product-card">
+                    <h3>🔨 Materiale de Construcții</h3>
+                    <p>Gășiți tot ce aveți nevoie pentru proiectele de construcții si reparații:<br>• Șuruburi<br>• Cuie<br>• Vopsele de înalta calitate</p>
+                </div>
+
+                <div class="product-card">
+                    <h3>🧹 Materiale de Curățenie</h3>
+                    <p>Produse de curățenie profesionale pentru casă si birou:<br>• Detergent si balsam de rufe <br>• Lavete și bureți de vase <br>• Multe altele</p>
+                </div>
+
+                <div class="product-card">
+                    <h3>🚗 Piese Auto</h3>
+                    <p>În parteneriat cu Bardi Auto, aducem orice piese din depozit. În stoc avem:<br>• Uleiuri de motor<br>• Lichid de parbriz<br>• Becuri auto</p>
+                </div>
+
+                <div class="product-card">
+                    <h3>🛡️ Asigurări Auto</h3>
+                    <p>Oferim soluții complete pentru asigurări auto. Va putem face oferta pentru polița obligatorie RCA cu condiții avantajoase.</p>
+                </div>
+
+                <div class="product-card">
+                    <h3>🍺 Băuturi</h3>
+                    <p>Selecție vastă de băuturi pentru orice gust:<br>• Cafea premium<br>• Sucuri răcoritoare<br>• Bere, vin și băuturi tari</p>
+                </div>
+
+                <div class="product-card">
+                    <h3>📞 Comenzi Speciale</h3>
+                    <p>Nu găsești ceea ce căutai? Sunați-ne și vom face tot posibilul să găsim produsul dorit. Avem acces la stocuri mari prin rețeaua noastră.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="galerie">
+        <div class="container">
+            <h2>Galeria Magazinului</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="this.classList.toggle('expanded')">
+                    <img src="https://i.imgur.com/Re4kdGw.jpeg">
+                </div>
+                <div class="gallery-item" onclick="this.classList.toggle('expanded')">
+                    <img src="https://i.imgur.com/HO8MUkS.jpeg">
+                </div>
+                <div class="gallery-item" onclick="this.classList.toggle('expanded')">
+                    <img src="https://i.imgur.com/MuFylNS.jpeg">
+                </div>
+                <div class="gallery-item" onclick="this.classList.toggle('expanded')">
+                    <img src="https://i.imgur.com/Re4kdGw.jpeg">
+                </div>
+                <div class="gallery-item" onclick="this.classList.toggle('expanded')">
+                    <img src="https://i.imgur.com/Q35IlJv.jpeg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay" onclick="closeImage()"></div>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contactează-ne</h2>
+            <div class="produse-grid">
+                <div class="product-card" style="text-align: center;">
+                    <h3>📍 Locație</h3>
+                    <p>Lili Bar Magazin Universal<br>Comuna Bicazu Ardelean, Județul Neamț<br>Romania</p>
+                </div>
+                <div class="product-card" style="text-align: center;">
+                    <h3>📞 Telefon</h3>
+                    <p>Tel: 0746 793 601<br>Disponibil 7 zile pe săptămâna</p>
+                </div>
+                <div class="product-card" style="text-align: center;">
+                    <h3>⏰ Program</h3>
+                    <p>Luni - Vineri: 8:00 - 20:00<br>Sâmbătă: 9:00 - 20:00<br>Duminică: Închis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Lili Bar - Magazin Universal.</p>
+        <div class="contact-info">
+            <p>Am câștigat încrederea clienților prin calitate și serviciu impecabil.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Functie pentru deschiderea pozei in fullscreen
+        function expandImage(event) {
+            event.stopPropagation();
+            const item = event.currentTarget;
+            item.classList.add('expanded');
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Functie pentru inchiderea pozei
+        function closeImage() {
+            document.querySelectorAll('.gallery-item.expanded').forEach(item => {
+                item.classList.remove('expanded');
+            });
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Click pe overlay pentru a inchide
+        document.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('modalOverlay');
+            overlay.addEventListener('click', closeImage);
+
+            // Inchide cu butonul Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeImage();
+                }
+            });
+        });
+
+        // Smooth scrolling pentru linkuri
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efect de fade-in pentru carduri la scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .gallery-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
