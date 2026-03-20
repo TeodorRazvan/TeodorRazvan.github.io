@@ -1,505 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tepes-Bobescu Teodor-Razvan - Portfolio</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tepes-Bobescu Teodor-Razvan | Frontend Developer</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .bg-gradient {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: float 20s ease-in-out infinite;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .orb1 {
-            width: 500px;
-            height: 500px;
-            background: #00f5ff;
-            top: -10%;
-            right: 10%;
-            animation-delay: 0s;
-        }
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
 
-        .orb2 {
-            width: 400px;
-            height: 400px;
-            background: #7c3aed;
-            bottom: -10%;
-            left: 10%;
-            animation-delay: -5s;
-        }
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite;
+    }
 
-        .orb3 {
-            width: 350px;
-            height: 350px;
-            background: #ec4899;
-            top: 40%;
-            left: 50%;
-            animation-delay: -10s;
-        }
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: #00f5ff;
+      top: -10%;
+      right: 10%;
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -50px) scale(1.1); }
-            50% { transform: translate(-30px, 50px) scale(0.9); }
-            75% { transform: translate(30px, 30px) scale(1.05); }
-        }
+    .orb2 {
+      width: 420px;
+      height: 420px;
+      background: #7c3aed;
+      bottom: -10%;
+      left: 8%;
+      animation-delay: -6s;
+    }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-            position: relative;
-        }
+    .orb3 {
+      width: 320px;
+      height: 320px;
+      background: #ec4899;
+      top: 40%;
+      left: 50%;
+      animation-delay: -12s;
+    }
 
-        nav {
-            padding: 30px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: fadeInDown 0.8s ease;
-        }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(40px, -50px) scale(1.08); }
+      50% { transform: translate(-30px, 40px) scale(0.95); }
+      75% { transform: translate(25px, 20px) scale(1.03); }
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #00f5ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
 
-        .nav-links a:hover {
-            color: #00f5ff;
-        }
+    nav {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeInDown 0.8s ease;
+    }
 
-        header {
-            padding: 100px 0;
-            text-align: center;
-        }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        h1 {
-            font-size: 5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff, #00f5ff, #7c3aed);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-            letter-spacing: -2px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
 
-        .subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.6);
-            animation: fadeInUp 1s ease 0.2s both;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-        }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
 
-        .projects-section {
-            padding: 80px 0 120px;
-        }
+    .nav-links a:hover {
+      color: #00f5ff;
+    }
 
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 60px;
-            font-weight: 700;
-            animation: fadeIn 1s ease;
-            letter-spacing: -1px;
-        }
+    header {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+    .hero-content {
+      max-width: 860px;
+      animation: fadeInUp 1s ease;
+    }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 0;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            animation: fadeInUp 0.6s ease both;
-            overflow: hidden;
-        }
+    h1 {
+      font-size: 4.4rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff, #00f5ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .project-card:nth-child(1) { animation-delay: 0.1s; }
-        .project-card:nth-child(2) { animation-delay: 0.2s; }
-        .project-card:nth-child(3) { animation-delay: 0.3s; }
-        .project-card:nth-child(4) { animation-delay: 0.4s; }
-        .project-card:nth-child(5) { animation-delay: 0.5s; }
-        .project-card:nth-child(6) { animation-delay: 0.6s; }
+    .subtitle {
+      font-size: 1.35rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
 
-        .project-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(0, 245, 255, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 245, 255, 0.15);
-        }
+    .hero-description {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.64);
+    }
 
-        .project-image {
-            width: 100%;
-            height: 240px;
-            background: linear-gradient(135deg, #00f5ff, #7c3aed);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            transition: transform 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-        .project-image::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all 0.35s ease;
+    }
 
-        .project-card:hover .project-image::before {
-            transform: translateX(100%);
-        }
+    .btn-primary {
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(0, 245, 255, 0.22);
+    }
 
-        .project-content {
-            padding: 30px;
-        }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(0, 245, 255, 0.3);
+    }
 
-        .project-title {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+    }
 
-        .project-description {
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      color: #00f5ff;
+      border-color: rgba(0, 245, 255, 0.35);
+    }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+    section {
+      padding: 90px 0;
+    }
 
-        .tag {
-            background: rgba(0, 245, 255, 0.1);
-            border: 1px solid rgba(0, 245, 255, 0.2);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: #00f5ff;
-            font-weight: 500;
-        }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
 
-        .cta-section {
-            text-align: center;
-            margin-top: 60px;
-        }
+    .section-intro {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 44px;
+    }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #00f5ff, #7c3aed);
-            color: #fff;
-            padding: 18px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #7c3aed, #00f5ff);
-            transition: left 0.4s ease;
-        }
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .cta-button:hover::before {
-            left: 0;
-        }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 245, 255, 0.24);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 28px 60px rgba(0, 245, 255, 0.12);
+    }
 
-        .cta-button span {
-            position: relative;
-            z-index: 1;
-        }
+    .project-image {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.4rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.4);
-        }
+    .project-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 80px;
-        }
+    .project-card:hover .project-image::after {
+      opacity: 1;
+    }
 
-        footer p {
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 20px;
-        }
+    .project-content {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
+    .project-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-        .social-links a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-            font-weight: 500;
-        }
+    .project-description {
+      color: rgba(255, 255, 255, 0.63);
+      margin-bottom: 18px;
+    }
 
-        .social-links a:hover {
-            color: #00f5ff;
-            transform: translateY(-3px);
-        }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
 
-        #project {
-          text-decoration: none;
-          color: #fff;
-        }
+    .tag {
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      color: #00f5ff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
 
-        #project:visited {
-          text-decoration: none;
-          color: #fff;
-        }
+    .project-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
 
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .project-btn {
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .project-btn-primary {
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      color: #fff;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .project-btn-primary:hover {
+      transform: translateY(-2px);
+    }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
+    .project-btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+    }
 
-            .subtitle {
-                font-size: 1.2rem;
-            }
+    .project-btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 245, 255, 0.35);
+      color: #00f5ff;
+    }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+    }
 
-            .nav-links {
-                display: none;
-            }
+    .glass-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+    }
 
-            .container {
-                padding: 0 20px;
-            }
-        }
-    </style>
+    .glass-box p {
+      color: rgba(255, 255, 255, 0.68);
+      margin-bottom: 16px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-link {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      color: #00f5ff;
+      border-color: rgba(0, 245, 255, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 20px;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      header {
+        min-height: 72vh;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 1.15rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .project-image {
+        height: 190px;
+      }
+
+      .hero-buttons,
+      .project-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .btn,
+      .project-btn,
+      .contact-link {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="bg-gradient">
-        <div class="gradient-orb orb1"></div>
-        <div class="gradient-orb orb2"></div>
-        <div class="gradient-orb orb3"></div>
-    </div>
+  <div class="bg-gradient">
+    <div class="gradient-orb orb1"></div>
+    <div class="gradient-orb orb2"></div>
+    <div class="gradient-orb orb3"></div>
+  </div>
 
-    <div class="container">
-        <nav>
-            <div class="logo">Portfolio</div>
-            <div class="nav-links">
-                <a href="#work">Work</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+  <div class="container">
+    <nav>
+      <div class="logo">TR Portfolio</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="hero-content">
+        <h1>Tepes-Bobescu Teodor-Razvan</h1>
+        <p class="subtitle">Junior Frontend Developer</p>
+        <p class="hero-description">
+          I build responsive and user-friendly web interfaces using HTML, CSS, JavaScript, and React.
+          I’m currently focused on improving my portfolio, strengthening my frontend fundamentals,
+          and preparing for my first role in web development.
+        </p>
+        <div class="hero-buttons">
+          <a href="#work" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/TeodorRazvan" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="work">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-intro">
+        These projects reflect my progress as a frontend developer and my focus on clean layouts,
+        responsive design, and practical interface building.
+      </p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #00f5ff, #7c3aed);">☕</div>
+          <div class="project-content">
+            <h3 class="project-title">Lili Bar</h3>
+            <p class="project-description">
+              A responsive coffee shop website focused on visual branding, clean structure,
+              and a smooth browsing experience. Built with HTML, CSS, and JavaScript.
+            </p>
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive</span>
             </div>
-        </nav>
-
-        <header>
-            <h1>Tepes-Bobescu Teodor-Razvan</h1>
-            <p class="subtitle">Frontend Web Developer</p>
-        </header>
-
-        <section class="projects-section">
-            <h2 class="section-title">Selected Work</h2>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <a href="Project_1/index.html" id="project">
-                    <div class="project-image">☕</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Lili Bar: E-Commerce Portfolio Project</h3>
-                        <p class="project-description">An e-commerce website portfolio project demonstrating a cohesive brand identity and a seamless user experience. The design focuses on elegant visuals and functional user flows.</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #ec4899, #7c3aed);">🎨</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Project Two</h3>
-                        <p class="project-description">An innovative design system that brings consistency and beauty to digital products across all platforms.</p>
-                        <div class="project-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">Design</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #7c3aed, #ec4899);">⚡</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Project Three</h3>
-                        <p class="project-description">High-performance mobile app that delivers seamless user experiences with cutting-edge technology.</p>
-                        <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Redux</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #00f5ff, #ec4899);">🌟</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Project Four</h3>
-                        <p class="project-description">AI-powered tool that enhances productivity and automates repetitive workflows with intelligent algorithms.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">API</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #ec4899, #00f5ff);">🚀</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Project Five</h3>
-                        <p class="project-description">E-commerce platform with cutting-edge features and stunning visual design that converts visitors.</p>
-                        <div class="project-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">Stripe</span>
-                            <span class="tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image" style="background: linear-gradient(135deg, #7c3aed, #00f5ff);">🔥</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Project Six</h3>
-                        <p class="project-description">Real-time collaboration tool that connects teams and boosts communication with seamless integration.</p>
-                        <div class="project-tags">
-                            <span class="tag">WebSocket</span>
-                            <span class="tag">Express</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-actions">
+              <a href="Project_1/index.html" class="project-btn project-btn-primary" target="_blank">Live Demo</a>
+              <a href="https://github.com/TeodorRazvan/TeodorRazvan.github.io/tree/main/Project_1" class="project-btn project-btn-secondary" target="_blank">Source Code</a>
             </div>
+          </div>
+        </div>
 
-            <div class="cta-section">
-                <a href="#" class="cta-button"><span>View All Projects</span></a>
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #ec4899, #7c3aed);">🌦️</div>
+          <div class="project-content">
+            <h3 class="project-title">Weather App</h3>
+            <p class="project-description">
+              Coming soon. A project built to practice working with APIs, search functionality,
+              dynamic rendering, and responsive UI structure.
+            </p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">Responsive</span>
             </div>
-        </section>
+            <div class="project-actions">
+              <a href="#" class="project-btn project-btn-secondary">In Progress</a>
+            </div>
+          </div>
+        </div>
 
-        <footer>
-            <p>&copy; 2025 Your Name. Crafted with passion.</p>
-            <div class="social-links">
-                <a href="https://github.com/TeodorRazvan" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/teodor-razvan-tepes-bobescu-774b03215/" target="_blank">LinkedIn</a>
-                <a href="#">Twitter</a>
-                <a href="#">Email</a>
+        <div class="project-card">
+          <div class="project-image" style="background: linear-gradient(135deg, #7c3aed, #ec4899);">✅</div>
+          <div class="project-content">
+            <h3 class="project-title">Task Manager</h3>
+            <p class="project-description">
+              Coming soon. A frontend project created to improve UI logic, DOM manipulation,
+              state handling, and local storage usage.
+            </p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Local Storage</span>
+              <span class="tag">UI Logic</span>
             </div>
-        </footer>
-    </div>
+            <div class="project-actions">
+              <a href="#" class="project-btn project-btn-secondary">In Progress</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="info-grid">
+        <div class="glass-box">
+          <p>
+            I completed a Frontend Web Development course and I’m now continuing to learn with a clear goal:
+            becoming job-ready and starting my career as a frontend developer.
+          </p>
+          <p>
+            Right now, I’m focused on building stronger portfolio projects that demonstrate responsive design,
+            clean UI structure, JavaScript interactivity, API usage, and better code organization.
+          </p>
+          <p>
+            My next step is to keep improving my fundamentals and move toward more advanced React projects
+            that feel closer to real-world applications.
+          </p>
+        </div>
+
+        <div class="glass-box" id="skills">
+          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Skills</h2>
+          <div class="skills-grid">
+            <span class="skill-pill">HTML</span>
+            <span class="skill-pill">CSS</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Responsive Design</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="glass-box">
+        <p>
+          I’m currently building my portfolio and looking to grow as a frontend developer.
+          You can find my work and professional profile below.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://github.com/TeodorRazvan" target="_blank" class="contact-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/teodor-razvan-tepes-bobescu-774b03215/" target="_blank" class="contact-link">LinkedIn</a>
+          <a href="mailto:razvanteo97@gmail.com" class="contact-link">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Tepes-Bobescu Teodor-Razvan. Built with HTML, CSS and JavaScript.</p>
+    </footer>
+  </div>
 </body>
 </html>
