@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tepes-Bobescu Teodor-Razvan | Frontend Developer</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #0a0a0a;
+      color: #ffffff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.38;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 500px;
+      height: 500px;
+      background: #00f5ff;
+      top: -10%;
+      right: 10%;
+    }
+
+    .orb2 {
+      width: 420px;
+      height: 420px;
+      background: #7c3aed;
+      bottom: -10%;
+      left: 8%;
+      animation-delay: -6s;
+    }
+
+    .orb3 {
+      width: 320px;
+      height: 320px;
+      background: #ec4899;
+      top: 40%;
+      left: 50%;
+      animation-delay: -12s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(40px, -50px) scale(1.08); }
+      50% { transform: translate(-30px, 40px) scale(0.95); }
+      75% { transform: translate(25px, 20px) scale(1.03); }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    nav {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #00f5ff;
+    }
+
+    header {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 860px;
+      animation: fadeInUp 1s ease;
+    }
+
+    h1 {
+      font-size: 4.4rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff, #00f5ff, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.35rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 18px;
+      font-weight: 300;
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: all 0.35s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(0, 245, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 38px rgba(0, 245, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      color: #00f5ff;
+      border-color: rgba(0, 245, 255, 0.35);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 44px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 245, 255, 0.24);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 28px 60px rgba(0, 245, 255, 0.12);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-placeholder {
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      color: rgba(255, 255, 255, 0.63);
+      margin-bottom: 18px;
+    }
+
+    .project-highlights {
+      margin-bottom: 20px;
+      padding-left: 18px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .project-highlights li {
+      margin-bottom: 8px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      color: #00f5ff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .project-btn {
+      padding: 11px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .project-btn-primary {
+      background: linear-gradient(135deg, #00f5ff, #7c3aed);
+      color: #fff;
+    }
+
+    .project-btn-primary:hover,
+    .project-btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .project-btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .project-btn-secondary:hover {
+      border-color: rgba(0, 245, 255, 0.35);
+      color: #00f5ff;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+    }
+
+    .glass-box p {
+      color: rgba(255, 255, 255, 0.68);
+      margin-bottom: 16px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-pill {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+
+    .journey-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .journey-item {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .journey-item h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .journey-item p {
+      color: rgba(255, 255, 255, 0.65);
+      margin: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-link {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-2px);
+      color: #00f5ff;
+      border-color: rgba(0, 245, 255, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-top: 20px;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      header {
+        min-height: 72vh;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      .subtitle {
+        font-size: 1.15rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .project-image {
+        height: 190px;
+      }
+
+      .hero-buttons,
+      .project-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .btn,
+      .project-btn,
+      .contact-link {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient">
+    <div class="gradient-orb orb1"></div>
+    <div class="gradient-orb orb2"></div>
+    <div class="gradient-orb orb3"></div>
+  </div>
+
+  <div class="container">
+    <nav>
+      <div class="logo">TR Portfolio</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#journey">Learning Journey</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <header>
+      <div class="hero-content">
+        <h1>Tepes-Bobescu Teodor-Razvan</h1>
+        <p class="subtitle">Junior Frontend Developer</p>
+        <p class="hero-description">
+          I build responsive and user-friendly web interfaces using HTML, CSS, JavaScript, and React.
+          Right now, I’m focused on improving my portfolio, strengthening my frontend fundamentals,
+          and preparing for my first role in web development.
+        </p>
+        <div class="hero-buttons">
+          <a href="#work" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/TeodorRazvan" target="_blank" class="btn btn-secondary">GitHub Profile</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="work">
+      <h2 class="section-title">Selected Work</h2>
+      <p class="section-intro">
+        These projects reflect my progress as a frontend developer, with a focus on responsive layouts,
+        cleaner UI structure, and practical frontend functionality.
+      </p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/lili-bar-preview.jpg" alt="Lili Bar project preview" />
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Lili Bar</h3>
+            <p class="project-description">
+              A responsive coffee shop website focused on visual branding, clear layout structure,
+              and a smooth browsing experience built with HTML, CSS, and JavaScript.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Responsive layout for desktop and mobile</li>
+              <li>Clean branded interface and visual structure</li>
+              <li>Frontend interactions built with JavaScript</li>
+            </ul>
+
+            <div class="project-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="Project_1/index.html" class="project-btn project-btn-primary" target="_blank">Live Demo</a>
+              <a href="https://github.com/TeodorRazvan" class="project-btn project-btn-secondary" target="_blank">Source Code</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-placeholder">🌦️</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Weather App</h3>
+            <p class="project-description">
+              Coming soon. A project built to practice API integration, dynamic data rendering,
+              search functionality, and responsive interface design.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Real-time weather data from an external API</li>
+              <li>City search and result rendering</li>
+              <li>Responsive card-based UI</li>
+            </ul>
+
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">Responsive</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="#" class="project-btn project-btn-secondary">In Progress</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-placeholder">✅</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Task Manager</h3>
+            <p class="project-description">
+              Coming soon. A frontend project created to improve UI logic, DOM manipulation,
+              state handling, and local storage usage.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Create, edit, complete, and delete tasks</li>
+              <li>Store task data with local storage</li>
+              <li>Practice cleaner code structure</li>
+            </ul>
+
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Local Storage</span>
+              <span class="tag">UI Logic</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="#" class="project-btn project-btn-secondary">In Progress</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="info-grid">
+        <div class="glass-box">
+          <p>
+            I completed a Frontend Web Development course and I’m now continuing to learn with a clear goal:
+            becoming job-ready and starting my career as a frontend developer.
+          </p>
+          <p>
+            My current focus is building stronger portfolio projects that show responsive design,
+            JavaScript interactivity, API usage, and better UI implementation.
+          </p>
+          <p>
+            I’m working step by step to turn my learning into practical, visible progress through real projects.
+          </p>
+        </div>
+
+        <div class="glass-box" id="skills">
+          <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 20px;">Skills</h2>
+          <div class="skills-grid">
+            <span class="skill-pill">HTML</span>
+            <span class="skill-pill">CSS</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">React</span>
+            <span class="skill-pill">Responsive Design</span>
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">GitHub</span>
+            <span class="skill-pill">Figma</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <h2 class="section-title">Learning Journey</h2>
+      <p class="section-intro">
+        Since I’m at the beginning of my frontend career, I use my portfolio to show progress,
+        consistency, and the practical skills I’m building through projects.
+      </p>
+
+      <div class="journey-list">
+        <div class="journey-item">
+          <h3>Frontend Course Completed</h3>
+          <p>
+            Built my foundation in HTML, CSS, JavaScript, responsive layouts, and modern frontend structure.
+          </p>
+        </div>
+
+        <div class="journey-item">
+          <h3>Portfolio in Progress</h3>
+          <p>
+            I’m actively improving this portfolio by adding better projects, stronger UI decisions,
+            and more realistic frontend functionality.
+          </p>
+        </div>
+
+        <div class="journey-item">
+          <h3>Current Focus</h3>
+          <p>
+            Right now I’m focused on JavaScript practice, API-based projects, cleaner code organization,
+            and moving toward stronger React projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="glass-box">
+        <p>
+          I’m currently building my portfolio and preparing for my first opportunity in frontend development.
+          You can find my work and professional profile below.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://github.com/TeodorRazvan" target="_blank" class="contact-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/teodor-razvan-tepes-bobescu-774b03215/" target="_blank" class="contact-link">LinkedIn</a>
+          <a href="mailto:youremail@example.com" class="contact-link">Email</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Tepes-Bobescu Teodor-Razvan. Built with HTML, CSS and JavaScript.</p>
+    </footer>
+  </div>
+</body>
+</html>
