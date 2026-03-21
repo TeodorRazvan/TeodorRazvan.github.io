@@ -2,6 +2,14 @@ const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
 
+function loadTasks() {
+  const savedTasks = localStorage.getItem("tasks");
+
+  if (savedTasks) {
+    tasks = JSON.parse(savedTasks);
+  }
+}
+
 let tasks = [];
 
 function renderTasks() {
@@ -38,11 +46,13 @@ function addTask() {
   });
 
   taskInput.value = "";
+  saveTasks();
   renderTasks();
 }
 
 function deleteTask(index) {
   tasks.splice(index, 1);
+  saveTasks();
   renderTasks();
 }
 
@@ -58,3 +68,10 @@ taskInput.addEventListener("keydown", function (event) {
     addTask();
   }
 });
+
+function saveTasks() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+loadTasks();
+renderTasks();
