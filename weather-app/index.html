@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="icon" href="/weather-app/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <main class="app">
+    <div class="weather-card">
+      <header class="card-header">
+        <div class="logo-mark">☁</div>
+        <h1>Weather</h1>
+        <p class="subtitle">Find the sky wherever you are</p>
+      </header>
+
+      <div class="search-section">
+        <div class="search-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Search city…"
+            aria-label="City name"
+          />
+          <button id="searchBtn">Go</button>
+        </div>
+
+        <button id="locationBtn" class="location-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          </svg>
+          Use my location
+        </button>
+      </div>
+
+      <p id="message" class="message"></p>
+      <div id="loader" class="loader hidden">
+        <div class="pulse"></div>
+      </div>
+
+      <div id="weatherResult" class="weather-result hidden">
+        <div class="city-row">
+          <h2 id="cityName">City Name</h2>
+          <img id="weatherIcon" src="" alt="Weather icon" />
+        </div>
+
+        <div class="temp-block">
+          <span id="temperature" class="temperature">0°</span>
+          <span id="description" class="description">Clear sky</span>
+        </div>
+
+        <div class="weather-details">
+          <div class="detail-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span class="label">Humidity</span>
+            <strong id="humidity">0%</strong>
+          </div>
+          <div class="detail-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/>
+            </svg>
+            <span class="label">Wind</span>
+            <strong id="windSpeed">0 m/s</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

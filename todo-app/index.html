@@ -5,37 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>To-Do App</title>
   <link rel="icon" href="/todo-app/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="noise"></div>
+
   <main class="app">
     <div class="container">
-      <h1>To-Do List</h1>
-      <p class="subtitle">Organize your day, one task at a time.</p>
+
+      <header class="app-header">
+        <div class="header-meta">
+          <span class="day-label" id="dayLabel"></span>
+          <span class="date-label" id="dateLabel"></span>
+        </div>
+        <h1>My List</h1>
+        <p class="subtitle">Organize your day, one task at a time.</p>
+      </header>
 
       <div class="todo-input">
         <input
           type="text"
           id="taskInput"
-          placeholder="Add a new task..."
+          placeholder="What needs to be done?"
           aria-label="Task input"
         />
-        <button id="addTaskBtn">Add</button>
+        <button id="addTaskBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Add
+        </button>
       </div>
 
       <div class="filters">
-       <button class="filter-btn active" data-filter="all">All</button>
-       <button class="filter-btn" data-filter="active">Active</button>
-       <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Done</button>
       </div>
+
+      <ul id="taskList"></ul>
+
       <div class="todo-footer">
         <span id="taskCount">0 tasks left</span>
         <button id="clearCompletedBtn">Clear completed</button>
       </div>
-      <ul id="taskList"></ul>
+
     </div>
   </main>
 
   <script src="script.js"></script>
+  <script>
+    // Set live date
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    document.getElementById('dayLabel').textContent = days[now.getDay()];
+    document.getElementById('dateLabel').textContent = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+  </script>
 </body>
 </html>

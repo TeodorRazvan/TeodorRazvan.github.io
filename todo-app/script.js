@@ -10,27 +10,17 @@ let currentFilter = "all";
 
 function saveTasks() {
   const tasksToSave = tasks.map(function (task) {
-    return {
-      id: task.id,
-      text: task.text,
-      completed: task.completed,
-    };
+    return { id: task.id, text: task.text, completed: task.completed };
   });
-
   localStorage.setItem("tasks", JSON.stringify(tasksToSave));
 }
 
 function loadTasks() {
   const savedTasks = localStorage.getItem("tasks");
-
   if (savedTasks) {
     const parsedTasks = JSON.parse(savedTasks);
-
     tasks = parsedTasks.map(function (task) {
-      return {
-        ...task,
-        isEditing: false,
-      };
+      return { ...task, isEditing: false };
     });
   }
 }
@@ -38,15 +28,16 @@ function loadTasks() {
 function createTaskElement(task) {
   const li = document.createElement("li");
   li.classList.add("task-item");
-
-  if (task.completed) {
-    li.classList.add("completed");
-  }
+  if (task.completed) li.classList.add("completed");
 
   const buttonsWrapper = document.createElement("div");
   buttonsWrapper.classList.add("task-buttons");
 
   if (task.isEditing) {
+    // Placeholder check circle (disabled during edit)
+    const ghost = document.createElement("div");
+    ghost.classList.add("task-check");
+
     const editInput = document.createElement("input");
     editInput.classList.add("task-edit-input");
     editInput.type = "text";
@@ -67,15 +58,11 @@ function createTaskElement(task) {
     });
 
     editInput.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        saveEditedTask(task.id, editInput.value);
-      }
-
-      if (event.key === "Escape") {
-        cancelEditingTask(task.id);
-      }
+      if (event.key === "Enter") saveEditedTask(task.id, editInput.value);
+      if (event.key === "Escape") cancelEditingTask(task.id);
     });
 
+    li.appendChild(ghost);
     li.appendChild(editInput);
     buttonsWrapper.appendChild(saveButton);
     buttonsWrapper.appendChild(cancelButton);
@@ -89,16 +76,28 @@ function createTaskElement(task) {
     return li;
   }
 
+  // Custom circular checkbox
+  const checkBtn = document.createElement("button");
+  checkBtn.classList.add("task-check");
+  checkBtn.setAttribute("aria-label", task.completed ? "Mark incomplete" : "Mark complete");
+
+  const checkIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  checkIcon.setAttribute("viewBox", "0 0 24 24");
+  checkIcon.setAttribute("fill", "none");
+  checkIcon.setAttribute("stroke", "currentColor");
+  checkIcon.setAttribute("stroke-width", "3");
+  const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+  polyline.setAttribute("points", "20 6 9 17 4 12");
+  checkIcon.appendChild(polyline);
+  checkBtn.appendChild(checkIcon);
+
+  checkBtn.addEventListener("click", function () {
+    toggleTask(task.id);
+  });
+
   const taskText = document.createElement("span");
   taskText.classList.add("task-text");
   taskText.textContent = task.text;
-
-  const toggleButton = document.createElement("button");
-  toggleButton.classList.add("task-btn", "complete-btn");
-  toggleButton.textContent = task.completed ? "Undo" : "Done";
-  toggleButton.addEventListener("click", function () {
-    toggleTask(task.id);
-  });
 
   const editButton = document.createElement("button");
   editButton.classList.add("task-btn", "edit-btn");
@@ -114,10 +113,10 @@ function createTaskElement(task) {
     deleteTask(task.id);
   });
 
-  buttonsWrapper.appendChild(toggleButton);
   buttonsWrapper.appendChild(editButton);
   buttonsWrapper.appendChild(deleteButton);
 
+  li.appendChild(checkBtn);
   li.appendChild(taskText);
   li.appendChild(buttonsWrapper);
 
@@ -125,45 +124,28 @@ function createTaskElement(task) {
 }
 
 function getFilteredTasks() {
-  if (currentFilter === "active") {
-    return tasks.filter(function (task) {
-      return !task.completed;
-    });
-  }
-
-  if (currentFilter === "completed") {
-    return tasks.filter(function (task) {
-      return task.completed;
-    });
-  }
-
+  if (currentFilter === "active") return tasks.filter(t => !t.completed);
+  if (currentFilter === "completed") return tasks.filter(t => t.completed);
   return tasks;
 }
 
 function renderTasks() {
   taskList.innerHTML = "";
-
   const filteredTasks = getFilteredTasks();
 
   if (filteredTasks.length === 0) {
     const emptyItem = document.createElement("li");
     emptyItem.classList.add("empty-state");
-
-    if (currentFilter === "active") {
-      emptyItem.textContent = "No active tasks.";
-    } else if (currentFilter === "completed") {
-      emptyItem.textContent = "No completed tasks yet.";
-    } else {
-      emptyItem.textContent = "No tasks yet. Add your first one.";
-    }
-
+    if (currentFilter === "active") emptyItem.textContent = "No active tasks.";
+    else if (currentFilter === "completed") emptyItem.textContent = "Nothing completed yet.";
+    else emptyItem.textContent = "Your list is empty. Add something.";
     taskList.appendChild(emptyItem);
+    updateTaskCount();
     return;
   }
 
   filteredTasks.forEach(function (task) {
-  const taskElement = createTaskElement(task);
-    taskList.appendChild(taskElement);
+    taskList.appendChild(createTaskElement(task));
   });
 
   updateTaskCount();
@@ -171,192 +153,70 @@ function renderTasks() {
 
 function addTask() {
   const taskText = taskInput.value.trim();
+  if (taskText === "") return;
 
-  if (taskText === "") {
-    return;
-  }
-
-  const newTask = {
-  id: Date.now(),
-  text: taskText,
-  completed: false,
-  isEditing: false,
-};
-
-  tasks.push(newTask);
+  tasks.push({ id: Date.now(), text: taskText, completed: false, isEditing: false });
   saveTasks();
   renderTasks();
-
   taskInput.value = "";
   taskInput.focus();
 }
 
 function deleteTask(id) {
-  tasks = tasks.filter(function (task) {
-    return task.id !== id;
-  });
-
+  tasks = tasks.filter(t => t.id !== id);
   saveTasks();
   renderTasks();
 }
 
 function toggleTask(id) {
-  tasks = tasks.map(function (task) {
-    if (task.id === id) {
-      return {
-        ...task,
-        completed: !task.completed,
-      };
-    }
-    return task;
-  });
-
+  tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
   saveTasks();
   renderTasks();
 }
 
 function startEditingTask(id) {
-  tasks = tasks.map(function (task) {
-    if (task.id === id) {
-      return {
-        ...task,
-        isEditing: true,
-      };
-    }
-
-    return {
-      ...task,
-      isEditing: false,
-    };
-  });
-
+  tasks = tasks.map(t => ({ ...t, isEditing: t.id === id }));
   saveTasks();
   renderTasks();
 }
 
 function cancelEditingTask(id) {
-  tasks = tasks.map(function (task) {
-    if (task.id === id) {
-      return {
-        ...task,
-        isEditing: false,
-      };
-    }
-
-    return task;
-  });
-
+  tasks = tasks.map(t => t.id === id ? { ...t, isEditing: false } : t);
   saveTasks();
   renderTasks();
 }
 
 function saveEditedTask(id, newText) {
   const trimmedText = newText.trim();
-
-  if (trimmedText === "") {
-    return;
-  }
-
-  tasks = tasks.map(function (task) {
-    if (task.id === id) {
-      return {
-        ...task,
-        text: trimmedText,
-        isEditing: false,
-      };
-    }
-
-    return task;
-  });
-
-  saveTasks();
-  renderTasks();
-}
-
-function editTask(id) {
-  const task = tasks.find(function (task) {
-    return task.id === id;
-  });
-
-  if (!task) {
-    return;
-  }
-
-  const newText = prompt("Edit your task:", task.text);
-
-  if (newText === null) {
-    return;
-  }
-
-  const trimmedText = newText.trim();
-
-  if (trimmedText === "") {
-    return;
-  }
-
-  tasks = tasks.map(function (task) {
-    if (task.id === id) {
-      return {
-        ...task,
-        text: trimmedText,
-      };
-    }
-
-    return task;
-  });
-
+  if (trimmedText === "") return;
+  tasks = tasks.map(t => t.id === id ? { ...t, text: trimmedText, isEditing: false } : t);
   saveTasks();
   renderTasks();
 }
 
 function setFilter(filter) {
   currentFilter = filter;
-
   filterButtons.forEach(function (button) {
-    button.classList.remove("active");
-
-    if (button.dataset.filter === filter) {
-      button.classList.add("active");
-    }
+    button.classList.toggle("active", button.dataset.filter === filter);
   });
-
   renderTasks();
 }
 
-addTaskBtn.addEventListener("click", addTask);
-
-taskInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    addTask();
-  }
-});
-
-filterButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    setFilter(button.dataset.filter);
-  });
-});
-
 function updateTaskCount() {
-  const activeTasks = tasks.filter(function (task) {
-    return !task.completed;
-  });
-
-  taskCount.textContent = `${activeTasks.length} task${activeTasks.length !== 1 ? "s" : ""} left`;
+  const count = tasks.filter(t => !t.completed).length;
+  taskCount.textContent = `${count} task${count !== 1 ? "s" : ""} left`;
 }
 
 function clearCompletedTasks() {
-  tasks = tasks.filter(function (task) {
-    return !task.completed;
-  });
-
+  tasks = tasks.filter(t => !t.completed);
   saveTasks();
   renderTasks();
 }
 
+addTaskBtn.addEventListener("click", addTask);
+taskInput.addEventListener("keydown", e => { if (e.key === "Enter") addTask(); });
+filterButtons.forEach(btn => btn.addEventListener("click", () => setFilter(btn.dataset.filter)));
 clearCompletedBtn.addEventListener("click", clearCompletedTasks);
-
-
 
 loadTasks();
 renderTasks();
