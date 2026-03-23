@@ -53,8 +53,5 @@ The purpose of this project is to create a professional online presence where I 
 
 ## Author
 
-<<<<<<< HEAD
-**Tepes-Bobescu Teodor-Razvan**
-=======
-**Tepes-Bobescu Teodor-Razvan**
->>>>>>> ba0404c159175d6672e3baa76ef654a6eb4b69bb
+
+**Teodor-Razvan Tepes-Bobescu**
