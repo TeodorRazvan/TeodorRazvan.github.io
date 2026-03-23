@@ -12,7 +12,7 @@ const description = document.getElementById("description");
 const humidity = document.getElementById("humidity");
 const windSpeed = document.getElementById("windSpeed");
 
-const API_KEY = "372f39308778ab095626bda3763e50e8";
+const API_KEY = "YOUR_API_KEY_HERE";
 
 async function getWeatherFromUrl(url) {
   try {
