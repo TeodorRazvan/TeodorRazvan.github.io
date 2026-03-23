@@ -36,7 +36,6 @@ if (subtitle) {
   setTimeout(typeWriter, 500);
 }
 
-// Project card tilt effect (reduced tilt amount)
 const projectCards = document.querySelectorAll('.project-card');
 
 projectCards.forEach(card => {
@@ -48,8 +47,8 @@ projectCards.forEach(card => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = (y - centerY) / 50; // Reduced from 20 to 50
-    const rotateY = (centerX - x) / 50; // Reduced from 20 to 50
+    const rotateX = (y - centerY) / 50;
+    const rotateY = (centerX - x) / 50;
     
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
   });
