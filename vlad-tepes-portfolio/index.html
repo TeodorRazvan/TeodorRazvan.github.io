@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vlad Țepeș — Videograf și Cinematograf profesionist din România. Portofoliu de videografie: medicină, imobiliare, evenimente. 2+ ani experiență, 400+ proiecte.">
+  <meta name="keywords" content="videograf, cinematograf, Romania, Vlad Tepes, videografie, filmare, imobiliare, evenimente, medicina">
+  <meta name="author" content="Vlad Țepeș">
+  <meta property="og:title" content="Vlad Țepeș — Videograf / Cinematograf">
+  <meta property="og:description" content="2+ ani experiență · 400+ proiecte · Medicină, Imobiliare, Evenimente">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#000000">
+  <title>Vlad Țepeș — Videograf / Cinematograf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <a href="#home" class="nav__brand" aria-label="Acasă">VT</a>
+    <ul class="nav__links" role="list">
+      <li><a href="#portofoliu">Portofoliu</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#fotografie">Fotografie</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav__burger" id="navBurger" aria-label="Deschide meniu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Meniu navigare" hidden>
+    <ul role="list">
+      <li><a href="#portofoliu" class="mobile-menu__link">Portofoliu</a></li>
+      <li><a href="#toolkit" class="mobile-menu__link">Toolkit</a></li>
+      <li><a href="#fotografie" class="mobile-menu__link">Fotografie</a></li>
+      <li><a href="#contact" class="mobile-menu__link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" id="home" aria-label="Introducere">
+    <div class="hero__bg" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Videograf</p>
+      <h1 class="hero__name reveal">
+        Vlad<br>
+        <em>Țepeș</em>
+      </h1>
+      <p class="hero__intro reveal">
+        Salut! Mă numesc Țepeș Vlad Ionuț — și nu, nu e o glumă.
+        Activez în domeniul videografiei de peste 2 ani, iar în tot acest timp
+        am încercat constant să mă perfecționez și să evoluez cu fiecare proiect realizat.
+      </p>
+      <a href="#portofoliu" class="hero__cta reveal" aria-label="Vezi portofoliul">
+        <span>Vezi Portofoliul</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M3.5 9h11M9 3.5l5.5 5.5-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero__stats reveal" aria-label="Statistici">
+      <div class="hero__stat">
+        <span class="hero__stat-num">2+</span>
+        <span class="hero__stat-label">Ani Experiență</span>
+      </div>
+      <div class="hero__stat-sep" aria-hidden="true"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-num">400+</span>
+        <span class="hero__stat-label">Proiecte Realizate</span>
+      </div>
+      <div class="hero__stat-sep" aria-hidden="true"></div>
+      <div class="hero__stat">
+        <span class="hero__stat-num">RO</span>
+        <span class="hero__stat-label">Bazat în România</span>
+      </div>
+    </div>
+
+    <div class="hero__scroll-line" aria-hidden="true"></div>
+  </section>
+
+  <!-- ═══ PORTFOLIO ═══ -->
+  <section class="portfolio" id="portofoliu" aria-label="Portofoliu">
+
+    <!-- Medicină -->
+    <div class="portfolio__cat reveal">
+      <header class="portfolio__cat-header">
+        <span class="portfolio__cat-num" aria-hidden="true">01</span>
+        <h2 class="portfolio__cat-title">Medicină</h2>
+        <span class="portfolio__cat-count">3 lucrări</span>
+      </header>
+      <div class="video-grid video-grid--3" role="list">
+        <article class="video-card" role="listitem" aria-label="Medicină video 1">
+          <div class="video-card__frame">
+            <video data-src="assets/Medicina/Medicina 1.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true">
+              <div class="video-card__play-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Medicină video 2">
+          <div class="video-card__frame">
+            <video data-src="assets/Medicina/Medicina 2.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true">
+              <div class="video-card__play-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Medicină video 3">
+          <div class="video-card__frame">
+            <video data-src="assets/Medicina/Medicina 3.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true">
+              <div class="video-card__play-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.14v14l11-7-11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Imobiliare -->
+    <div class="portfolio__cat reveal">
+      <header class="portfolio__cat-header">
+        <span class="portfolio__cat-num" aria-hidden="true">02</span>
+        <h2 class="portfolio__cat-title">Imobiliare</h2>
+        <span class="portfolio__cat-count">7 lucrări</span>
+      </header>
+      <div class="video-grid video-grid--4" role="list">
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 1">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 1.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 2">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 2.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 3">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 3.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 4">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 4.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 5">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 5.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 6">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 6.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Imobiliare video 7">
+          <div class="video-card__frame">
+            <video data-src="assets/Imobiliare/Imobiliare 7.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Evenimente -->
+    <div class="portfolio__cat reveal">
+      <header class="portfolio__cat-header">
+        <span class="portfolio__cat-num" aria-hidden="true">03</span>
+        <h2 class="portfolio__cat-title">Evenimente</h2>
+        <span class="portfolio__cat-count">3 lucrări</span>
+      </header>
+      <div class="video-grid video-grid--3" role="list">
+        <article class="video-card" role="listitem" aria-label="Evenimente video 1">
+          <div class="video-card__frame">
+            <video data-src="assets/Evenimente/Eveniment Kong.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Evenimente video 2">
+          <div class="video-card__frame">
+            <video data-src="assets/Evenimente/Evenimente 1.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+        <article class="video-card" role="listitem" aria-label="Evenimente video 3">
+          <div class="video-card__frame">
+            <video data-src="assets/Evenimente/Evenimente 3.mp4" muted playsinline preload="none" loop aria-hidden="true"></video>
+            <div class="video-card__overlay" aria-hidden="true"><div class="video-card__play-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></div></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══ TOOLKIT ═══ -->
+  <section class="toolkit" id="toolkit" aria-label="Toolkit">
+    <div class="toolkit__inner reveal">
+      <p class="section-label">Stack</p>
+      <h2 class="toolkit__title">Software-uri<br>Utilizate</h2>
+      <div class="toolkit__grid">
+        <div class="toolkit__item">
+          <span class="toolkit__name">Premiere</span>
+          <span class="toolkit__sub">Adobe Premiere Pro</span>
+        </div>
+        <div class="toolkit__item">
+          <span class="toolkit__name">After Effects</span>
+          <span class="toolkit__sub">Adobe After Effects</span>
+        </div>
+        <div class="toolkit__item">
+          <span class="toolkit__name">CapCut</span>
+          <span class="toolkit__sub">Mobile &amp; Desktop</span>
+        </div>
+        <div class="toolkit__item">
+          <span class="toolkit__name">DaVinci</span>
+          <span class="toolkit__sub">DaVinci Resolve</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PHOTOGRAPHY TEASER ═══ -->
+  <section class="photography" id="fotografie" aria-label="Fotografie">
+    <div class="photography__inner reveal">
+      <p class="section-label">În Curând</p>
+      <h2 class="photography__title">Fotografie</h2>
+      <p class="photography__text">
+        Secțiunea de fotografie este în lucru.<br>
+        Revino curând pentru noutăți.
+      </p>
+      <div class="photography__rule" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="contact" id="contact" aria-label="Contact">
+    <div class="contact__inner">
+
+      <div class="contact__heading reveal">
+        <h2 class="contact__title">
+          HAI SĂ<br>COLABORĂM
+        </h2>
+        <p class="contact__subtitle">Să dăm viață ideii tale.</p>
+        <p class="contact__desc">
+          Trimite-mi un mail, sună-mă sau scrie-mi pe orice platformă de mai jos — orice variantă merge.
+        </p>
+      </div>
+
+      <div class="contact__list reveal" role="list">
+
+        <a href="mailto:Vlad@vivaviewmedia.com" class="contact__item" role="listitem">
+          <div class="contact__item-info">
+            <span class="contact__item-label">Email</span>
+            <span class="contact__item-value">Vlad@vivaviewmedia.com</span>
+          </div>
+          <svg class="contact__item-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 16L16 4M16 4H7M16 4v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="tel:+40733418006" class="contact__item" role="listitem">
+          <div class="contact__item-info">
+            <span class="contact__item-label">Telefon</span>
+            <span class="contact__item-value">+40 733 418 006</span>
+          </div>
+          <svg class="contact__item-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 16L16 4M16 4H7M16 4v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="https://wa.me/40733418006" target="_blank" rel="noopener noreferrer" class="contact__item" role="listitem">
+          <div class="contact__item-info">
+            <span class="contact__item-label">WhatsApp</span>
+            <span class="contact__item-value">+40 733 418 006</span>
+          </div>
+          <svg class="contact__item-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 16L16 4M16 4H7M16 4v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <a href="https://instagram.com/vlad.tepes03" target="_blank" rel="noopener noreferrer" class="contact__item" role="listitem">
+          <div class="contact__item-info">
+            <span class="contact__item-label">Instagram</span>
+            <span class="contact__item-value">@vlad.tepes03</span>
+          </div>
+          <svg class="contact__item-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 16L16 4M16 4H7M16 4v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <span class="footer__brand" aria-label="Vlad Țepeș">VT</span>
+      <p class="footer__copy">© 2024 Vlad Țepeș. Toate drepturile rezervate.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
