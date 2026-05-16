@@ -261,7 +261,7 @@ document.querySelectorAll('.carousel__track').forEach(track => new Carousel(trac
 ══════════════════════════════════════════ */
 const i18n = {
   ro: {
-    langBtn:         'EN',
+    langBtn:         '<img src="assets/images/flag-gb.png" alt="" class="lang-flag" aria-hidden="true"> EN',
     navPortfolio:    'Portofoliu',
     navToolkit:      'Toolkit',
     navPhotography:  'Fotografie',
@@ -294,7 +294,7 @@ const i18n = {
     footerCopy:      '© 2024 Vlad Țepeș. Toate drepturile rezervate.',
   },
   en: {
-    langBtn:         'RO',
+    langBtn:         '<img src="assets/images/flag-ro.png" alt="" class="lang-flag" aria-hidden="true"> RO',
     navPortfolio:    'Portfolio',
     navToolkit:      'Toolkit',
     navPhotography:  'Photography',
@@ -333,7 +333,7 @@ function applyLang(lang) {
   document.documentElement.lang = lang;
 
   // Button label (shows the OTHER language)
-  document.getElementById('langToggle').textContent = t.langBtn;
+  document.getElementById('langToggle').innerHTML = t.langBtn;
 
   // Nav + mobile menu links
   const navLinks    = document.querySelectorAll('.nav__links a');
