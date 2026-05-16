@@ -255,9 +255,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, black 42%);
 }
 
-/* Hide on mobile — text fills the full width */
+/* Mobile — photo anchored to bottom of hero, sits below the text */
 @media (max-width: 599px) {
-  .hero__photo { display: none; }
+  .hero__photo {
+    display: block;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    height: 38%;
+  }
+  .hero__photo img {
+    object-position: top center;
+    opacity: 0.75;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 20%, black 48%);
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 20%, black 48%);
+  }
 }
 
 .hero__content {
