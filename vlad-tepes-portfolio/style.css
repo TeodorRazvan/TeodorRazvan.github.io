@@ -453,45 +453,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   scroll-snap-align: start;
 }
 
-/* ── Desktop: switch carousel back to a grid ── */
-@media (min-width: 600px) {
-  .carousel {
-    max-width: none;
-  }
-
-  .carousel__track {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    overflow: visible;
-    scroll-snap-type: none;
-    padding-right: 0;
-    cursor: default;
-    user-select: auto;
-    -webkit-user-select: auto;
-  }
-
-  .carousel__track.is-dragging {
-    cursor: default;
-  }
-
-  /* Imobiliare has 7 cards — use 4 columns */
-  .carousel--wide .carousel__track {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .carousel .video-card {
-    flex: none;
-    width: 100%;
-    scroll-snap-align: none;
-  }
-
-  /* Hide nav chrome on desktop */
-  .carousel__btn,
-  .carousel__dots {
-    display: none;
-  }
-}
-
 /* Prev / Next buttons */
 .carousel__btn {
   position: absolute;
@@ -550,6 +511,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--orange);
   width: 20px;
   border-radius: 3px;
+}
+
+/* ── Desktop: full-width draggable row ── */
+@media (min-width: 600px) {
+  .carousel .video-card {
+    flex: 0 0 280px;
+  }
+
+  .carousel__btn--prev { left: 0; }
+  .carousel__btn--next { right: clamp(1rem, 3vw, 2rem); }
+
+  .carousel__dots {
+    display: none;
+  }
 }
 
 /* ══════════════════════════════════════════
