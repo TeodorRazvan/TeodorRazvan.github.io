@@ -644,6 +644,24 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ══════════════════════════════════════════
+   AGENCY CREDIT
+══════════════════════════════════════════ */
+.agency-credit {
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  padding: 2.5rem clamp(1.25rem, 5vw, 3rem) 3rem;
+  margin: 0;
+}
+.agency-credit strong {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════════
    TOOLKIT
 ══════════════════════════════════════════ */
 .toolkit {
