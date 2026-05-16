@@ -291,7 +291,7 @@ const i18n = {
     phoneLabel:      'Telefon',
     whatsappLabel:   'WhatsApp',
     instagramLabel:  'Instagram',
-    footerCopy:      '© 2024 Vlad Țepeș. Toate drepturile rezervate.',
+    footerCopy:      '© 2026 Vlad Țepeș. Toate drepturile rezervate.',
   },
   en: {
     langBtn:         '<img src="assets/images/flag-ro.png" alt="" class="lang-flag" aria-hidden="true"> RO',
@@ -324,7 +324,7 @@ const i18n = {
     phoneLabel:      'Phone',
     whatsappLabel:   'WhatsApp',
     instagramLabel:  'Instagram',
-    footerCopy:      '© 2024 Vlad Țepeș. All rights reserved.',
+    footerCopy:      '© 2026 Vlad Țepeș. All rights reserved.',
   },
 };
 
