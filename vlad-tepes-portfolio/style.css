@@ -156,6 +156,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav__burger.open span:first-child { transform: translateY(6.5px) rotate(45deg); }
 .nav__burger.open span:last-child  { transform: translateY(-6.5px) rotate(-45deg); }
 
+/* Language toggle */
+.lang-toggle {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.lang-toggle:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
 /* ══════════════════════════════════════════
    MOBILE MENU
 ══════════════════════════════════════════ */

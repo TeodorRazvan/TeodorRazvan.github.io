@@ -257,6 +257,151 @@ class Carousel {
 document.querySelectorAll('.carousel__track').forEach(track => new Carousel(track));
 
 /* ══════════════════════════════════════════
+   LANGUAGE SWITCH
+══════════════════════════════════════════ */
+const i18n = {
+  ro: {
+    langBtn:         'EN',
+    navPortfolio:    'Portofoliu',
+    navToolkit:      'Toolkit',
+    navPhotography:  'Fotografie',
+    navContact:      'Contact',
+    heroEyebrow:     'Videograf',
+    heroIntro:       'Salut! Mă numesc Țepeș Vlad Ionuț — și nu, nu e o glumă. Activez în domeniul videografiei de peste 2 ani, iar în tot acest timp am încercat constant să mă perfecționez și să evoluez cu fiecare proiect realizat.',
+    heroCta:         'Vezi Portofoliul',
+    stat1Label:      'Ani Experiență',
+    stat2Label:      'Proiecte Realizate',
+    stat3Label:      'Bazat în România',
+    cat1Title:       'Medicină',
+    cat1Count:       '3 lucrări',
+    cat2Title:       'Imobiliare',
+    cat2Count:       '7 lucrări',
+    cat3Title:       'Evenimente',
+    cat3Count:       '3 lucrări',
+    agencyCredit:    'Clipurile au fost realizate cu ajutorul agenției <strong>VivaView Media</strong>',
+    toolkitLabel:    'Stack',
+    toolkitTitle:    'Software-uri<br>Utilizate',
+    photoLabel:      'În Curând',
+    photoTitle:      'Fotografie',
+    photoText:       'Secțiunea de fotografie este în lucru.<br>Revino curând pentru noutăți.',
+    contactTitle:    'HAI SĂ<br>COLABORĂM',
+    contactSubtitle: 'Să dăm viață ideilor tale.',
+    contactDesc:     'Trimite-mi un mail, sună-mă sau scrie-mi pe orice platformă de mai jos — orice variantă merge.',
+    emailLabel:      'Email',
+    phoneLabel:      'Telefon',
+    whatsappLabel:   'WhatsApp',
+    instagramLabel:  'Instagram',
+    footerCopy:      '© 2024 Vlad Țepeș. Toate drepturile rezervate.',
+  },
+  en: {
+    langBtn:         'RO',
+    navPortfolio:    'Portfolio',
+    navToolkit:      'Toolkit',
+    navPhotography:  'Photography',
+    navContact:      'Contact',
+    heroEyebrow:     'Videographer',
+    heroIntro:       "Hi! My name is Vlad Ionuț Țepeș — and no, it's not a joke. I've been working in videography for over 2 years, constantly striving to improve and grow with every project.",
+    heroCta:         'View Portfolio',
+    stat1Label:      'Years Experience',
+    stat2Label:      'Projects Completed',
+    stat3Label:      'Based in Romania',
+    cat1Title:       'Medicine',
+    cat1Count:       '3 works',
+    cat2Title:       'Real Estate',
+    cat2Count:       '7 works',
+    cat3Title:       'Events',
+    cat3Count:       '3 works',
+    agencyCredit:    'The clips were created with the help of <strong>VivaView Media</strong> agency',
+    toolkitLabel:    'Stack',
+    toolkitTitle:    'Software<br>Used',
+    photoLabel:      'Coming Soon',
+    photoTitle:      'Photography',
+    photoText:       'The photography section is a work in progress.<br>Check back soon for updates.',
+    contactTitle:    "LET'S<br>COLLABORATE",
+    contactSubtitle: "Let's bring your ideas to life.",
+    contactDesc:     'Send me an email, call me, or message me on any platform below — any option works.',
+    emailLabel:      'Email',
+    phoneLabel:      'Phone',
+    whatsappLabel:   'WhatsApp',
+    instagramLabel:  'Instagram',
+    footerCopy:      '© 2024 Vlad Țepeș. All rights reserved.',
+  },
+};
+
+function applyLang(lang) {
+  const t = i18n[lang];
+  document.documentElement.lang = lang;
+
+  // Button label (shows the OTHER language)
+  document.getElementById('langToggle').textContent = t.langBtn;
+
+  // Nav + mobile menu links
+  const navLinks    = document.querySelectorAll('.nav__links a');
+  const mobileLinks = document.querySelectorAll('.mobile-menu__link');
+  const linkKeys    = ['navPortfolio', 'navToolkit', 'navPhotography', 'navContact'];
+  linkKeys.forEach((key, i) => {
+    if (navLinks[i])    navLinks[i].textContent    = t[key];
+    if (mobileLinks[i]) mobileLinks[i].textContent = t[key];
+  });
+
+  // Hero
+  document.querySelector('.hero__eyebrow').textContent  = t.heroEyebrow;
+  document.querySelector('.hero__intro').textContent    = t.heroIntro;
+  document.querySelector('.hero__cta span').textContent = t.heroCta;
+
+  // Stats
+  const statLabels = document.querySelectorAll('.hero__stat-label');
+  [t.stat1Label, t.stat2Label, t.stat3Label].forEach((v, i) => {
+    if (statLabels[i]) statLabels[i].textContent = v;
+  });
+
+  // Portfolio categories
+  const catTitles = document.querySelectorAll('.portfolio__cat-title');
+  const catCounts = document.querySelectorAll('.portfolio__cat-count');
+  [[t.cat1Title, t.cat1Count], [t.cat2Title, t.cat2Count], [t.cat3Title, t.cat3Count]]
+    .forEach(([title, count], i) => {
+      if (catTitles[i]) catTitles[i].textContent = title;
+      if (catCounts[i]) catCounts[i].textContent = count;
+    });
+
+  // Agency credit (has <strong> inside)
+  document.querySelector('.agency-credit').innerHTML = t.agencyCredit;
+
+  // Toolkit
+  document.querySelector('.toolkit__inner .section-label').textContent = t.toolkitLabel;
+  document.querySelector('.toolkit__title').innerHTML = t.toolkitTitle;
+
+  // Photography
+  document.querySelector('.photography__inner .section-label').textContent = t.photoLabel;
+  document.querySelector('.photography__title').textContent               = t.photoTitle;
+  document.querySelector('.photography__text').innerHTML                  = t.photoText;
+
+  // Contact
+  document.querySelector('.contact__title').innerHTML       = t.contactTitle;
+  document.querySelector('.contact__subtitle').textContent  = t.contactSubtitle;
+  document.querySelector('.contact__desc').textContent      = t.contactDesc;
+
+  const contactLabels = document.querySelectorAll('.contact__item-label');
+  [t.emailLabel, t.phoneLabel, t.whatsappLabel, t.instagramLabel].forEach((v, i) => {
+    if (contactLabels[i]) contactLabels[i].textContent = v;
+  });
+
+  // Footer
+  document.querySelector('.footer__copy').textContent = t.footerCopy;
+
+  localStorage.setItem('lang', lang);
+}
+
+// Init: respect saved preference, fall back to Romanian
+let currentLang = localStorage.getItem('lang') || 'ro';
+applyLang(currentLang);
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'ro' ? 'en' : 'ro';
+  applyLang(currentLang);
+});
+
+/* ══════════════════════════════════════════
    SMOOTH ANCHOR SCROLL (fallback for older
    browsers that don't support scroll-behavior)
 ══════════════════════════════════════════ */
