@@ -239,7 +239,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   right: 0;
   top: 0;
   bottom: 0;
-  width: clamp(320px, 46vw, 640px);
+  width: clamp(320px, 62vw, 1100px);
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -250,9 +250,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  opacity: 0.6;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%);
-  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 25%, black 55%);
+  opacity: 0.65;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, black 42%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, black 42%);
 }
 
 /* Hide on mobile — text fills the full width */
