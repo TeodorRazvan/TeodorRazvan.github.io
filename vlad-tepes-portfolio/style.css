@@ -252,6 +252,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font);
   font-size: clamp(3.8rem, 11vw, 9.5rem);
   font-weight: 900;
+  padding-bottom: 0.3em;
   line-height: 0.88;
   letter-spacing: -0.025em;
   color: var(--white);
