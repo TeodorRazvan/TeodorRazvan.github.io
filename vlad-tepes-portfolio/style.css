@@ -453,13 +453,42 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   scroll-snap-align: start;
 }
 
-/* On desktop, cap the carousel width so only 1 card + peek is visible */
+/* ── Desktop: switch carousel back to a grid ── */
 @media (min-width: 600px) {
   .carousel {
-    max-width: 400px;
+    max-width: none;
   }
+
+  .carousel__track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    scroll-snap-type: none;
+    padding-right: 0;
+    cursor: default;
+    user-select: auto;
+    -webkit-user-select: auto;
+  }
+
+  .carousel__track.is-dragging {
+    cursor: default;
+  }
+
+  /* Imobiliare has 7 cards — use 4 columns */
+  .carousel--wide .carousel__track {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .carousel .video-card {
-    flex: 0 0 300px;
+    flex: none;
+    width: 100%;
+    scroll-snap-align: none;
+  }
+
+  /* Hide nav chrome on desktop */
+  .carousel__btn,
+  .carousel__dots {
+    display: none;
   }
 }
 
