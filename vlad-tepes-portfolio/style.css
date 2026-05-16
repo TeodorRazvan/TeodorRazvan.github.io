@@ -104,6 +104,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav__brand:hover { opacity: 0.75; }
 
+.nav__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .nav__links {
   display: none;
   align-items: center;
