@@ -135,6 +135,128 @@ document.querySelectorAll('.video-card').forEach(card => {
 });
 
 /* ══════════════════════════════════════════
+   CAROUSEL
+══════════════════════════════════════════ */
+class Carousel {
+  constructor(track) {
+    this.track   = track;
+    this.el      = track.parentElement;
+    this.cards   = [...track.querySelectorAll('.video-card')];
+    this.total   = this.cards.length;
+    this.current = 0;
+    this.dots    = [];
+
+    this._buildButtons();
+    this._buildDots();
+    this._bindScroll();
+    this._bindMouseDrag();
+    this._update();
+  }
+
+  /* ── Build prev/next arrow buttons ── */
+  _buildButtons() {
+    const arrow = (dir) => {
+      const btn = document.createElement('button');
+      btn.className = `carousel__btn carousel__btn--${dir}`;
+      btn.setAttribute('aria-label', dir === 'prev' ? 'Anterior' : 'Următor');
+      btn.innerHTML = dir === 'prev'
+        ? `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+        : `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      btn.addEventListener('click', () => dir === 'prev' ? this.prev() : this.next());
+      this.el.appendChild(btn);
+      return btn;
+    };
+    this.btnPrev = arrow('prev');
+    this.btnNext = arrow('next');
+  }
+
+  /* ── Build dot indicators ── */
+  _buildDots() {
+    const container = this.el.querySelector('.carousel__dots');
+    if (!container) return;
+    this.cards.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel__dot';
+      dot.setAttribute('aria-label', `Video ${i + 1}`);
+      dot.addEventListener('click', () => this.goTo(i));
+      container.appendChild(dot);
+      this.dots.push(dot);
+    });
+  }
+
+  /* ── Sync current index from native scroll position ── */
+  _bindScroll() {
+    let t;
+    this.track.addEventListener('scroll', () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        const sl = this.track.scrollLeft;
+        let nearest = 0, minDist = Infinity;
+        this.cards.forEach((card, i) => {
+          const dist = Math.abs(card.offsetLeft - sl);
+          if (dist < minDist) { minDist = dist; nearest = i; }
+        });
+        if (nearest !== this.current) {
+          this.current = nearest;
+          this._update();
+        }
+      }, 60);
+    }, { passive: true });
+  }
+
+  /* ── Mouse drag (desktop) ── */
+  _bindMouseDrag() {
+    let startX = 0, startScroll = 0, dragging = false, moved = false;
+
+    this.track.addEventListener('mousedown', e => {
+      if (e.button !== 0) return;
+      startX     = e.clientX;
+      startScroll = this.track.scrollLeft;
+      dragging   = true;
+      moved      = false;
+      this.track.classList.add('is-dragging');
+    });
+
+    this.track.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const delta = e.clientX - startX;
+      if (Math.abs(delta) > 4) moved = true;
+      this.track.scrollLeft = startScroll - delta;
+    });
+
+    // Prevent click-to-play when drag occurred
+    this.track.addEventListener('click', e => {
+      if (moved) e.stopImmediatePropagation();
+    }, true);
+
+    const stop = () => {
+      dragging = false;
+      this.track.classList.remove('is-dragging');
+    };
+    window.addEventListener('mouseup',    stop);
+    window.addEventListener('mouseleave', stop);
+  }
+
+  /* ── Navigate ── */
+  goTo(index) {
+    this.current = Math.max(0, Math.min(index, this.total - 1));
+    this.track.scrollTo({ left: this.cards[this.current].offsetLeft, behavior: 'smooth' });
+    this._update();
+  }
+  prev() { this.goTo(this.current - 1); }
+  next() { this.goTo(this.current + 1); }
+
+  /* ── Sync UI ── */
+  _update() {
+    this.dots.forEach((d, i) => d.classList.toggle('active', i === this.current));
+    this.btnPrev.disabled = this.current === 0;
+    this.btnNext.disabled = this.current === this.total - 1;
+  }
+}
+
+document.querySelectorAll('.carousel__track').forEach(track => new Carousel(track));
+
+/* ══════════════════════════════════════════
    SMOOTH ANCHOR SCROLL (fallback for older
    browsers that don't support scroll-behavior)
 ══════════════════════════════════════════ */
